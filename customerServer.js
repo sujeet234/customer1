@@ -77,8 +77,11 @@ app.put("/customers/:id",function(req,res){
 })
 
 app.delete("/customers/:id",function(req,res){
-    let id = +req.params.id;
+    let id = req.params.id;
     let index = customers.findIndex((ct)=>ct.id===id);
-    let deletedCustomer = customers.splice(index,1);
+    let deletedCustomer;
+    if(index>=0){
+        deletedCustomer = customers.splice(index,1);
+    }
     res.send(deletedCustomer);
 })
