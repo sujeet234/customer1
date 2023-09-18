@@ -53,7 +53,7 @@ app.get("/customers",function(req,res){
 app.post("/customers",function(req,res){
     let body = req.body;
     let maxId = customers.reduce((ele,curr)=>curr.id >= ele ? curr.id : ele , 0);
-    let newId = maxId + 1;
+    let newId = maxId + 1+"";
     let newCustomer = {id:newId, ...body};
     customers.push(newCustomer);
     res.send(newCustomer);
